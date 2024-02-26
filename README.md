@@ -24,4 +24,4 @@ RESUMO
 <!-- Coloque seu nome, uma foto sua e uma pequena bio sobre você na seguinte tabela: -->
 |  |  |
 |:-------------:|:------------------------------------------------------------:|
-|  <img src="img/profilepic.jpeg" width="150px"></br> **Nome do Autor** | RESUMO SOBRE MIM |
+|  <img src="img/profilepic.jpeg" width="150px"></br> **Vinícius Padilha Vieira** | RESUMO SOBRE MIM |
