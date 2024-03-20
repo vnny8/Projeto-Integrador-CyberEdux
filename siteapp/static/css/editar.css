@@ -1,0 +1,47 @@
+html,
+body {
+    padding: 30px;
+}
+
+[data-target=slide-content] {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.slide-down {
+    animation: slide-down 0.3s linear both;
+}
+
+.slide-up {
+    animation: slide-up 0.3s linear both;
+}
+
+@keyframes slide-down {
+    0% {
+        visibility: hidden;
+        height: 0;
+    }
+
+    95% {
+        visibility: visible;
+        height: 250px;
+    }
+    /* Set height to 'auto' after animation for spacing showing form-invalid feedback message */
+    100% {
+        visibility: visible;
+        height: auto;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        visibility: visible;
+        height: 250px;
+    }
+
+    to {
+        visibility: hidden;
+        height: 0;
+    }
+}

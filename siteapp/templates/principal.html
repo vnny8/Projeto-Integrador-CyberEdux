@@ -1,0 +1,198 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css'>
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js'></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v6.5.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v1.0.0/css/all.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Gestão Escolar Integrada</title>
+
+    <style>
+        :root {
+            --primary-color: #007BFF;
+            --dark-bg: #343A40;
+            --light-bg: #E9E9E9;
+            --text-color: #5A5A5A;
+            --login-form-bg: #FFFFFF;
+            --btn-login: #0056B3;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+            color: var(--text-color);
+        }
+        .navbar-dark .navbar-brand, .navbar-dark .navbar-nav .nav-link {
+            color: #FFF;
+        }
+        .navbar-dark .btn-light.dropdown-toggle.bg-dark.text-light {
+            background-color: var(--dark-bg);
+            border-color: var(--primary-color);
+        }
+        .dropdown-menu.bg-dark.text-light {
+            background-color: var(--dark-bg);
+        }
+        .hero-section {
+            background-image: url('{% static 'fundo.png' %}');
+            background-size: cover;
+            background-position: center;
+            height: 75vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 
+        }
+
+        .featurette-divider {
+            margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+        }
+
+        .text-border {
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        
+    </style>
+</head>
+<body class="text-light" style="background: #F1F1F1;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><b>Gestão Escolar Integrada</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio" style="color:white;">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre" style="color:white;">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato" style="color:white;">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle bg-dark text-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                               Logar
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark text-light" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item text-light" href="aluno">Aluno</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-light" href="login">Professor</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-light" href="diretor">Diretor</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="inicio" class="hero-section" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 75vh;">
+        <div>
+            <h1 class="text-border"><strong>Bem-vindo à Gestão Escolar Integrada</strong></h1>
+        </div>
+        <div>
+            <h5 class="text-border">Comprometimento com a educação de qualidade para todos.</h5>
+        </div>
+    </div>
+
+    <section id="sobre" class="container my-5" style="background-color: #F1F1F1;">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading" style="color: black;">Sobre a escola. <strong>Nosso compromisso.</strong></h2>
+                <p class="lead" style="color: black;">Aqui na Gestão Escolar Integrada, acreditamos no poder da educação para transformar vidas. Com uma equipe dedicada e infraestrutura de ponta, oferecemos um ambiente de aprendizado seguro e estimulante para nossos estudantes.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'principal2.png' %}" alt="Imagem sobre a escola">
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-lg-start bg-dark text-muted">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color:white;">
+            <div class="me-5 d-none d-lg-block">
+                <span>Contate-nos:</span>
+            </div>
+        </section>
+        <section id="contato">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color:white;">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Gestão Escolar Integrada
+                        </h6>
+                        <p>
+                            Eleve seu futuro na Gestão Escolar Integrada. Matricule-se para uma educação de excelência ou faça parte da nossa equipe docente. Contate-nos agora e comece a transformação.
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="color:white;">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Ensino Médio
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">1° Ano </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">2° Ano</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">3° Ano</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4" style="color:white;">
+                            Redes Sociais
+                        </h6>
+                        <p style="color:white;">
+                            <i class="fab fa-facebook-f"> </i>
+                            <a href="https://www.facebook.com" class="text-reset">Facebook</a>
+                        </p>
+                        <p style="color:white;">
+                            <i class="fa-brands fa-instagram"></i>
+                            <a href="https://www.instagram.com" class="text-reset">Instagram</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color:white;">
+                        <h6 class="text-uppercase fw-bold mb-4" style="color:white;">
+                            Contato
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> Cuiabá, MT - Boa Esperança, 12</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            GestaoEscolar@hotmail.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 55 65 99326-7074</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Direito Autoral:
+            <a class="text-reset fw-bold" href="https://gestaoescolarintegrada.com/">Gestão Escolar Integrada</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

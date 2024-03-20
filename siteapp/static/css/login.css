@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom, white, white);
+    text-align:left;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.Titulo{
+    color: white;
+    width:100%; 
+    padding-bottom: 0px;
+    border-bottom: 2px solid #333;
+    font-size: 15px;
+}
+
+img{
+    border-radius: 10px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.Login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.Login form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.DadosLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EBEBEB;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.Nome{
+    input{
+        background-color: rgb(255, 255, 255);
+        border-radius: 7px;
+        height: 45px;
+        width: 330px;
+        outline: none;
+        border: 0;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+}
+
+.Senha{
+    input{
+        border-radius: 7px;
+        height: 45px;
+        width: 330px;
+        outline: none;
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 2px;
+        margin-top: 10px;
+        font-size: 15px;
+    } 
+}
+
+.Usuario{
+    input{
+        background-color: rgb(227, 227, 227);
+        border-radius: 8px;
+        height: 45px;
+        width: 330px;
+        outline: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+}
+
+.Enviar{
+    button{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        height: 45px;
+        width: 333px;
+        color: white;
+        background-color: #2B2F33;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    } 
+}
+
+.Registrar{
+    button{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        height: 35px;
+        width: 323px;
+        color: white;
+        background-color: #2B2F33;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    } 
+}
+
+.Voltar{
+    color: #007DF9;
+}
+
+.Registro{
+    text-align: center;
+    color: white;
+}
+
+.Login img{
+    width: 130px;
+    height: auto;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.Link{
+    color:#00b3ff;
+    text-decoration: none;
+}
+
+.Mensagem{
+    input{
+        background-color: rgb(227, 227, 227);
+        border-radius: 8px;
+        height: px;
+        width: 320px;
+        outline: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+}

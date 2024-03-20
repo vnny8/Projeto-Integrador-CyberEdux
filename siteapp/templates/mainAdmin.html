@@ -1,0 +1,629 @@
+{% load static %} 
+<!-- Styles -->
+<style>
+    #chartdiv1, #chartdiv2, #chartdiv3 {
+      width: 1450px;
+      height: 300px;
+      margin-top: 10px;
+      display: none;
+    }
+    #chartdiv4{
+        width: 1450px;
+        height: 300px;
+        margin-top: 10px; 
+        margin-bottom: 50px;
+    }
+    #chartdiv1 {
+        display: block;
+    }
+    </style>
+
+<head>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css'>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js'></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v6.5.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v1.0.0/css/all.css'>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="#">Sistema Escolar</a>
+                    </div>
+                </div>
+                <li><a id="pagina_inicial"  href="#home">Página inicial</a></li>
+                <li><a id="aluno" href="#aluno">Matricular aluno</a></li>
+                <li><a id="editar" href="#editar">Editar aluno</a></li>
+                <li><a id="professor" href="#professor">Contratar professor</a></li>
+                <li><a id="editarProfessor" href="#editar">Editar professor</a></li>
+                <li><a id="alugar" href="#events">Pedidos de alugar sala</a></li>
+                <li><a id="sair" href="#sair" style="color: white;">Sair da conta</a></li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div>
+                    <h1>Bem vindo, Diretor</h1>
+                </div>
+                <div class="row" style="background-color: #F1F1F1; height: 950px; margin-bottom: 50px; margin-left: 3px; border-radius: 16px;">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <h3 style="margin-top: 15px;">Estatísticas do número de alunos por disciplina e ano do Ensino Médio</h3>
+                        <select id="chartSelector" style="border: 0.5px solid black;; background-color: white; height: 30px; border-radius: 7px;">
+                            <option value="chartdiv1">1° ano</option>
+                            <option value="chartdiv2">2° ano</option>
+                            <option value="chartdiv3">3° ano</option>
+                        </select>
+                    </div>
+                    
+                    <div id="chartdiv1" style="display: block;"></div>
+                    <div id="chartdiv2" style="display: none;"></div>
+                    <div id="chartdiv3" style="display: none;"></div>
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h3 style="margin-top: 50px;">Estatísticas dos status dos alunos por Disciplina</h3>
+                        <select id="selectDisciplina" style="border: 0.5px solid black; background-color: #white; height: 30px; border-radius: 7px;">
+                                {% for disciplina in lista_disciplinas %}
+                                  <option value="{{disciplina.nome}}">{{disciplina.nome}}</option>
+                                {% endfor %}
+                        </select>
+                    </div>
+                    <div id="chartdiv4"></div>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+       
+    </div>
+    
+    <script>
+        document.getElementById("pagina_inicial").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'main';
+        });
+        document.getElementById("professor").addEventListener("click", function(event){
+        event.preventDefault();
+        window.location.href = 'contratar';
+        });
+        document.getElementById("aluno").addEventListener("click", function(event){
+        event.preventDefault();
+        window.location.href = 'matricula';
+        });
+        document.getElementById("editar").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'editar';
+        });
+        document.getElementById("alugar").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'alugar_sala';
+        });
+        document.getElementById("editarProfessor").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'editar_professor';
+        });
+        document.getElementById("sair").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'sair';
+        });
+            document.getElementById('chartSelector').addEventListener('change', function() {
+                // Esconde todos os divs
+                document.getElementById('chartdiv1').style.display = 'none';
+                document.getElementById('chartdiv2').style.display = 'none';
+                document.getElementById('chartdiv3').style.display = 'none';
+        
+                // Mostra o div selecionado
+                var selectedValue = this.value;
+                document.getElementById(selectedValue).style.display = 'block';
+            });
+    </script>
+</body>
+        
+    
+<script>
+    am5.ready(function() {
+    
+    // Create root element
+    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    var root = am5.Root.new("chartdiv1");
+    
+    
+    // Set themes
+    // https://www.amcharts.com/docs/v5/concepts/themes/
+    root.setThemes([
+      am5themes_Animated.new(root)
+    ]);
+    
+    
+    // Create chart
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/
+    var chart = root.container.children.push(am5xy.XYChart.new(root, {
+      panX: true,
+      panY: true,
+      wheelX: "panX",
+      wheelY: "zoomX",
+      pinchZoomX: true,
+      paddingLeft:0,
+      layout: root.verticalLayout
+    }));
+    
+    chart.set("colors", am5.ColorSet.new(root, {
+      colors: [
+        am5.color(0x73556E),
+        am5.color(0x9FA1A6),
+        am5.color(0xF2AA6B),
+        am5.color(0xF28F6B),
+        am5.color(0xA95A52),
+        am5.color(0xE35B5D),
+        am5.color(0xFFA446)
+      ]
+    }))
+    
+    // Create axes
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+    var xRenderer = am5xy.AxisRendererX.new(root, {
+      minGridDistance: 50,
+      minorGridEnabled: true
+    });
+    
+    xRenderer.grid.template.setAll({
+      location: 1
+    })
+    
+    var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+      maxDeviation: 0.3,
+      categoryField: "Disciplina",
+      renderer: xRenderer,
+      tooltip: am5.Tooltip.new(root, {})
+    }));
+    
+    var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+      maxDeviation: 0.3,
+      min: 0,
+      renderer: am5xy.AxisRendererY.new(root, {
+        strokeOpacity: 0.1
+      })
+    }));
+    
+    
+    // Create series
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+      name: "Series 1",
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: "value",
+      categoryXField: "Disciplina",
+      tooltip: am5.Tooltip.new(root, {
+        labelText: "{valueY}"
+      }),
+    }));
+    
+    series.columns.template.setAll({
+      tooltipY: 0,
+      tooltipText: "{categoryX}: {valueY}",
+      shadowOpacity: 0.1,
+      shadowOffsetX: 2,
+      shadowOffsetY: 2,
+      shadowBlur: 1,
+      strokeWidth: 2,
+      stroke: am5.color(0xffffff),
+      shadowColor: am5.color(0x000000),
+      cornerRadiusTL: 50,
+      cornerRadiusTR: 50,
+      fillGradient: am5.LinearGradient.new(root, {
+        stops: [
+          {}, // will use original column color
+          { color: am5.color(0x000000) }
+        ]
+      }),
+      fillPattern: am5.GrainPattern.new(root, {
+        maxOpacity: 0.15,
+        density: 0.5,
+        colors: [am5.color(0x000000), am5.color(0x000000), am5.color(0xffffff)]
+      })
+    });
+    
+    
+    series.columns.template.states.create("hover", {
+      shadowOpacity: 1,
+      shadowBlur: 10,
+      cornerRadiusTL: 10,
+      cornerRadiusTR: 10
+    })
+    
+    series.columns.template.adapters.add("fill", function (fill, target) {
+      return chart.get("colors").getIndex(series.columns.indexOf(target));
+    });
+    
+    var data = {{ dados_grafico1|safe }};
+    
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+    
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    series.appear(1000);
+    chart.appear(1000, 100);
+    
+    }); // end am5.ready()
+    </script>
+
+    <script>
+        am5.ready(function() {
+        
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new("chartdiv2");
+        
+        
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+        
+        
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft:0,
+          layout: root.verticalLayout
+        }));
+        
+        chart.set("colors", am5.ColorSet.new(root, {
+          colors: [
+            am5.color(0x73556E),
+            am5.color(0x9FA1A6),
+            am5.color(0xF2AA6B),
+            am5.color(0xF28F6B),
+            am5.color(0xA95A52),
+            am5.color(0xE35B5D),
+            am5.color(0xFFA446)
+          ]
+        }))
+        
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, {
+          minGridDistance: 50,
+          minorGridEnabled: true
+        });
+        
+        xRenderer.grid.template.setAll({
+          location: 1
+        })
+        
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "Disciplina",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          min: 0,
+          renderer: am5xy.AxisRendererY.new(root, {
+            strokeOpacity: 0.1
+          })
+        }));
+        
+        
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: "Series 1",
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "value",
+          categoryXField: "Disciplina",
+          tooltip: am5.Tooltip.new(root, {
+            labelText: "{valueY}"
+          }),
+        }));
+        
+        series.columns.template.setAll({
+          tooltipY: 0,
+          tooltipText: "{categoryX}: {valueY}",
+          shadowOpacity: 0.1,
+          shadowOffsetX: 2,
+          shadowOffsetY: 2,
+          shadowBlur: 1,
+          strokeWidth: 2,
+          stroke: am5.color(0xffffff),
+          shadowColor: am5.color(0x000000),
+          cornerRadiusTL: 50,
+          cornerRadiusTR: 50,
+          fillGradient: am5.LinearGradient.new(root, {
+            stops: [
+              {}, // will use original column color
+              { color: am5.color(0x000000) }
+            ]
+          }),
+          fillPattern: am5.GrainPattern.new(root, {
+            maxOpacity: 0.15,
+            density: 0.5,
+            colors: [am5.color(0x000000), am5.color(0x000000), am5.color(0xffffff)]
+          })
+        });
+        
+        
+        series.columns.template.states.create("hover", {
+          shadowOpacity: 1,
+          shadowBlur: 10,
+          cornerRadiusTL: 10,
+          cornerRadiusTR: 10
+        })
+        
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        var data = {{ dados_grafico2|safe }};
+        
+            xAxis.data.setAll(data);
+            series.data.setAll(data);
+        
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+        
+        }); // end am5.ready()
+        </script>
+
+        <script>
+            am5.ready(function() {
+            
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv3");
+            
+            
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+              am5themes_Animated.new(root)
+            ]);
+            
+            
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/
+            var chart = root.container.children.push(am5xy.XYChart.new(root, {
+              panX: true,
+              panY: true,
+              wheelX: "panX",
+              wheelY: "zoomX",
+              pinchZoomX: true,
+              paddingLeft:0,
+              layout: root.verticalLayout
+            }));
+            
+            chart.set("colors", am5.ColorSet.new(root, {
+              colors: [
+                am5.color(0x73556E),
+                am5.color(0x9FA1A6),
+                am5.color(0xF2AA6B),
+                am5.color(0xF28F6B),
+                am5.color(0xA95A52),
+                am5.color(0xE35B5D),
+                am5.color(0xFFA446)
+              ]
+            }))
+            
+            // Create axes
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+            var xRenderer = am5xy.AxisRendererX.new(root, {
+              minGridDistance: 50,
+              minorGridEnabled: true
+            });
+            
+            xRenderer.grid.template.setAll({
+              location: 1
+            })
+            
+            var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+              maxDeviation: 0.3,
+              categoryField: "Disciplina",
+              renderer: xRenderer,
+              tooltip: am5.Tooltip.new(root, {})
+            }));
+            
+            var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+              maxDeviation: 0.3,
+              min: 0,
+              renderer: am5xy.AxisRendererY.new(root, {
+                strokeOpacity: 0.1
+              })
+            }));
+            
+            
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+            var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+              name: "Series 1",
+              xAxis: xAxis,
+              yAxis: yAxis,
+              valueYField: "value",
+              categoryXField: "Disciplina",
+              tooltip: am5.Tooltip.new(root, {
+                labelText: "{valueY}"
+              }),
+            }));
+            
+            series.columns.template.setAll({
+              tooltipY: 0,
+              tooltipText: "{categoryX}: {valueY}",
+              shadowOpacity: 0.1,
+              shadowOffsetX: 2,
+              shadowOffsetY: 2,
+              shadowBlur: 1,
+              strokeWidth: 2,
+              stroke: am5.color(0xffffff),
+              shadowColor: am5.color(0x000000),
+              cornerRadiusTL: 50,
+              cornerRadiusTR: 50,
+              fillGradient: am5.LinearGradient.new(root, {
+                stops: [
+                  {}, // will use original column color
+                  { color: am5.color(0x000000) }
+                ]
+              }),
+              fillPattern: am5.GrainPattern.new(root, {
+                maxOpacity: 0.15,
+                density: 0.5,
+                colors: [am5.color(0x000000), am5.color(0x000000), am5.color(0xffffff)]
+              })
+            });
+            
+            
+            series.columns.template.states.create("hover", {
+              shadowOpacity: 1,
+              shadowBlur: 10,
+              cornerRadiusTL: 10,
+              cornerRadiusTR: 10
+            })
+            
+            series.columns.template.adapters.add("fill", function (fill, target) {
+              return chart.get("colors").getIndex(series.columns.indexOf(target));
+            });
+            
+            var data = {{ dados_grafico3|safe }};
+            
+                xAxis.data.setAll(data);
+                series.data.setAll(data);
+            
+            // Make stuff animate on load
+            // https://www.amcharts.com/docs/v5/concepts/animations/
+            series.appear(1000);
+            chart.appear(1000, 100);
+            
+            }); // end am5.ready()
+            </script>
+
+
+
+
+
+            <script>
+                am5.ready(function() {
+                  // Create root element
+                  var root = am5.Root.new("chartdiv4");
+              
+                  // Set themes
+                  root.setThemes([am5themes_Animated.new(root)]);
+              
+                  // Create chart
+                  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                    panX: true,
+                    panY: true,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    pinchZoomX:true,
+                    layout: root.verticalLayout
+                  }));
+              
+                  // Define colors
+                  chart.set("colors", am5.ColorSet.new(root, {
+                    colors: [
+                      am5.color(0xA95A52),
+                      am5.color(0xE35B5D),
+                      am5.color(0xFFA446)
+                    ]
+                  }));
+              
+                  // Create axes
+                  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+                    categoryField: "Estado",
+                    renderer: am5xy.AxisRendererX.new(root, {}),
+                    tooltip: am5.Tooltip.new(root, {})
+                  }));
+              
+                  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                    renderer: am5xy.AxisRendererY.new(root, {})
+                  }));
+              
+                  // Create series
+                  var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value",
+                    categoryXField: "Estado",
+                    tooltip: am5.Tooltip.new(root, {
+                      labelText: "{valueY}"
+                    })
+                  }));
+              
+                  series.columns.template.setAll({
+                    tooltipY: 0,
+                    strokeWidth: 2,
+                    strokeOpacity: 1
+                  });
+              
+                  series.columns.template.states.create("hover", {
+                    scale: 1.1
+                  });
+              
+                  // Load and process data
+                  function processData(selectedDisciplina) {
+                    var rawData = {{ dados_grafico4|safe }};
+              
+                    // Filter data based on selected disciplina
+                    var filteredData = rawData.filter(function(item) {
+                      return item.Disciplina === selectedDisciplina;
+                    });
+              
+                    // Calculate values for each Estado
+                    var data = filteredData.reduce(function(acc, current) {
+                      var found = acc.find(function(item) {
+                        return item.Estado === current.Estado;
+                      });
+                      if (found) {
+                        found.value += current.value;
+                      } else {
+                        acc.push({ Estado: current.Estado, value: current.value });
+                      }
+                      return acc;
+                    }, []);
+              
+                    xAxis.data.setAll(data);
+                    series.data.setAll(data);
+                  }
+              
+                  // Listen to changes on the select element
+                  document.getElementById("selectDisciplina").addEventListener("change", function() {
+                    processData(this.value);
+                  });
+              
+                  // Set initial data
+                  processData(document.getElementById("selectDisciplina").value);
+                });
+              </script>
+              
+                

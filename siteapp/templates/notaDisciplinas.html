@@ -1,0 +1,150 @@
+{% load static %} 
+{% load meus_filtros %}
+<head>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css'>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js'></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v6.5.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v1.0.0/css/all.css'>
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="#">Sistema Escolar</a>
+                    </div>
+                </div>
+                <li><a id="pagina_inicial" href="#home">Página inicial</a></li>
+                <li><a id="relatorio" href="#relatorio">Disciplinas</a></li>
+                <li><a id="mensagem" href="#mensagem">Contactar professor</a>
+                <li><a id="configuracoes" href="#services">Configurações da conta</a></li>
+                <li><a id="sair" href="#sair" style="color: white;">Sair da conta</a></li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg col-lg-offset-2">
+                        <h1 class="mb-5">Disciplinas</h1>
+                        {% for con in context %}
+                                    <div class="row m-1 mb-3 p-4" style="background-color: #F1F1F1; border-radius: 16px;">
+                                        <div class="row m-1">
+                                            <div>
+                                                <p class="ml-3"><strong>Disciplina: {{con.disciplina_nome}}</strong></p>
+                                                <div id="toolbar">
+                                                    <div class="row">
+                                                        <div class="col-lg-5 ml-3">
+                                                            <button id="edit" class="btn btn-success editButton" data-target="editForm{{ forloop.counter }}" style="border-radius: 7px; background-color: green">Ver informações <i class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div id="editForm{{ forloop.counter }}" style="display:none; margin-top: 10px; align-items: left;">
+                                                        <!-- Formulário de edição -->
+                                                        <div class="container" style="width: 1050px">
+                                                            <div class="card" data-target="slide-content" style="background-color: #FAFAFA; border-radius: 16px;">
+                                                                <div class="card-body">
+                                                                        <div class="row"> 
+                                                                            <div class="col-lg">
+                                                                                <fieldset>
+                                                                                            <div class="col-lg">
+                                                                                                <p style="color: black"><strong>Professor:</strong> {{con.professor_nome}}</p>
+                                                                                            </div>
+                                                                                            <div class="col-lg">
+                                                                                                {% if con.disciplina_plano %}
+                                                                                                    <a href="/media/{{ con.disciplina_plano.plano_ensino }}" style="display: block; margin-bottom: 10px;" download>Download plano de ensino vigente</a>
+                                                                                                {% else %}
+                                                                                                    <span style="display: block; margin-bottom: 10px;">Não há plano de ensino vigente</span>
+                                                                                                {% endif %}
+                                                                                            </div>
+                                                                                            <label for="text" class="col control-label">Nota</label>
+                                                                                            <div class="col-lg-10 mb-3">
+                                                                                                <input type="text" class="form-control" style="width: 100px; border-radius: 7px;" id="nota" name="nota" value="{{ con.nota|floatformat:2 }}" readonly>
+                                                                                            </div>
+                                                                                            <div class="m-1 mb-2 p-4" style="background-color: #EDEDED; border-radius: 16px;">
+                                                                                                <h7 style="color: black; margin-bottom: 30px;"><strong>Materiais de ensino</strong></h7>
+                                                                                                {% if con.materiais %}
+                                                                                                    {% for material in con.materiais %}
+                                                                                                        <a href="/media/{{ material.local }}" style="display: block; margin-bottom: 10px;" download><i class="fa-solid fa-file" style="color:black;"> </i> {{material.nome}}</a>
+                                                                                                    {% endfor %}
+                                                                                                {% else %}
+                                                                                                    <span style="display: block; margin-bottom: 10px;">Não há materiais de ensino</span>
+                                                                                                {% endif %}
+                                                                                           </div>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                            </div>   
+                                                        </div>        
+                                                    </div>           
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                            {% endfor %}                                                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editButtons = document.querySelectorAll('.editButton');
+            
+            editButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var targetId = btn.getAttribute('data-target');
+                    var editForm = document.getElementById(targetId);
+                    if (editForm.style.display === "none") {
+                        editForm.style.display = "block";
+                    } else {
+                        editForm.style.display = "none";
+                    }
+                });
+            });
+        });
+            document.getElementById("pagina_inicial").addEventListener("click", function(event){
+                event.preventDefault();
+                window.location.href = 'ambiente';
+            });
+            document.getElementById("configuracoes").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'conta';
+            });
+            document.getElementById("sair").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'deslogar';
+            });
+            document.getElementById("mensagem").addEventListener("click", function(event){
+                event.preventDefault();
+                window.location.href = 'mensagem';
+            });
+            document.getElementById("aluno").addEventListener("click", function(event){
+            event.preventDefault();
+            window.location.href = 'nota_alunos';
+            });
+        </script>
+</body>
+                                                                            
