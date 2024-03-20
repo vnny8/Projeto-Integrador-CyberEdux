@@ -54,8 +54,8 @@ AWS Elastic Beanstalk oferece uma solução mais escalável e robusta, mas com u
 
 Coloque aqui a modelagem do banco de dados desenvolvido no projeto. Você pode colocar diagramas conceituais e lógicos, ou até mesmo descrever textualmente o que cada uma das tabelas e atributos representam.
 
-<div class="row m-1 mb-2 p-4" style="border: 1px solid black;">
-<p>CREATE TABLE aluno (
+'''
+CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL DEFAULT '',
     data_nascimento DATE,
@@ -125,5 +125,4 @@ CREATE TABLE aluno_tem_professor (
     professor_id INTEGER NOT NULL REFERENCES professor(id) ON DELETE CASCADE,
     PRIMARY KEY (aluno_id, professor_id)
 );
-</p>
-</div>
+'''
