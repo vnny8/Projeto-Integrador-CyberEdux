@@ -36,9 +36,12 @@ PythonAnywhere é uma ótima opção para projetos Django menores ou em estágio
 AWS Elastic Beanstalk oferece uma solução mais escalável e robusta, mas com uma curva de aprendizado mais acentuada. É importante monitorar os custos, pois a AWS pode gerar cobranças inesperadas se não for bem configurada.
 
 <b>1.</b> Crie uma conta na AWS e configure o Elastic Beanstalk.
-<b>1.</b> Prepare seu aplicativo Django, garantindo que ele esteja pronto para produção conforme mencionado anteriormente.
-<b>1.</b> Utilize a AWS CLI para fazer o deploy do seu aplicativo no Elastic Beanstalk, o qual irá automatizar o processo de provisionamento de infraestrutura.
-<b>1.</b> Configure detalhes adicionais, como banco de dados, variáveis de ambiente e mais através do console do Elastic Beanstalk.
+
+<b>2.</b> Prepare seu aplicativo Django, garantindo que ele esteja pronto para produção conforme mencionado anteriormente.
+
+<b>3.</b> Utilize a AWS CLI para fazer o deploy do seu aplicativo no Elastic Beanstalk, o qual irá automatizar o processo de provisionamento de infraestrutura.
+
+<b>4.</b> Configure detalhes adicionais, como banco de dados, variáveis de ambiente e mais através do console do Elastic Beanstalk.
 
 
 <h3>Dicas Finais</h3>
