@@ -131,3 +131,8 @@ CREATE TABLE aluno_tem_professor (
     PRIMARY KEY (aluno_id, professor_id)
 );
 ```
+
+<h3>Diagrama Entidade Relacional (DER)</h3>
+O Diagrama Entidade-Relacional (DER) é uma ferramenta de modelagem usada para representar sistemas de informação de maneira abstrata e conceitual. Sua principal função é ajudar no projeto de bancos de dados, facilitando a compreensão das estruturas de dados, suas relações e como estas podem ser implementadas em um sistema de gerenciamento de banco de dados (SGBD).
+
+<img src="img/logoProjeto.png" width="150px">
