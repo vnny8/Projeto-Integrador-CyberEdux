@@ -26,4 +26,4 @@ O projeto "Gestão Escolar Integrada" visa simplificar a maneira como as institu
 <!-- Coloque seu nome, uma foto sua e uma pequena bio sobre você na seguinte tabela: -->
 |  |  |
 |:-------------:|:------------------------------------------------------------:|
-|  <img src="img/profilepic.jpeg" width="150px"></br> **Vinícius Padilha Vieira** | RESUMO SOBRE MIM |
+|  <img src="img/profilepic.jpeg" width="150px"></br> **Vinícius Padilha Vieira** | Meu nome é Vinícius Padilha Vieira, e atualmente estou cursando o quarto semestre do curso de Ciências da Computação na Universidade Federal de Mato Grosso (UFMT). Desde o começo da minha trajetória acadêmica, tenho consistentemente direcionado meus esforços e estudos para aprofundar meus conhecimentos e habilidades na área de desenvolvimento back-end. Este caminho tem sido marcado pela exploração e domínio de tecnologias avançadas, incluindo Java Spring Boot e, mais recentemente, a framework Django.
