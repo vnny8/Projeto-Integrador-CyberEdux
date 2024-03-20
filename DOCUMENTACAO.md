@@ -52,4 +52,78 @@ AWS Elastic Beanstalk oferece uma solução mais escalável e robusta, mas com u
 
 ## Modelagem de banco de dados
 
-Coloque aqui a modelagem do banco de dados desenvolvido no projeto. Você pode colocar diagramas conceituais e lógicos, ou até mesmo descrever textualmente o que cada uma das tabelas e atributos representam. 
+Coloque aqui a modelagem do banco de dados desenvolvido no projeto. Você pode colocar diagramas conceituais e lógicos, ou até mesmo descrever textualmente o que cada uma das tabelas e atributos representam.
+
+<div class="row m-1 mb-2 p-4" style="background-color: #F1F1F1; border-radius: 16px;">
+<p>CREATE TABLE aluno (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL DEFAULT '',
+    data_nascimento DATE,
+    sexo VARCHAR(50) NOT NULL DEFAULT '',
+    celular VARCHAR(30) DEFAULT '',
+    endereco TEXT,
+    cpf VARCHAR(30) NOT NULL DEFAULT '' UNIQUE,
+    rg VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    ano INTEGER NOT NULL DEFAULT 0,
+    turma CHAR(1) NOT NULL DEFAULT '',
+    perfil VARCHAR DEFAULT 'fotos/padrao.png'
+);
+
+CREATE TABLE plano_ensino (
+    id SERIAL PRIMARY KEY,
+    plano_ensino VARCHAR DEFAULT 'pdfs/'
+);
+
+CREATE TABLE disciplina (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    planoensino_id INTEGER REFERENCES plano_ensino(id) ON DELETE CASCADE
+);
+
+CREATE TABLE materiais (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    local VARCHAR DEFAULT 'pdfs/',
+    disciplina_id INTEGER NOT NULL REFERENCES disciplina(id) ON DELETE CASCADE
+);
+
+CREATE TABLE aluno_tem_disciplina (
+    id SERIAL PRIMARY KEY,
+    aluno_id INTEGER NOT NULL REFERENCES aluno(id) ON DELETE CASCADE,
+    disciplina_id INTEGER NOT NULL REFERENCES disciplina(id) ON DELETE CASCADE,
+    ano CHAR(4) DEFAULT '2023',
+    status VARCHAR(10) DEFAULT 'Cursando',
+    nota FLOAT DEFAULT 0.00,
+    UNIQUE(aluno_id, disciplina_id, ano)
+);
+
+CREATE TABLE professor (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL DEFAULT '',
+    data_nascimento DATE,
+    sexo VARCHAR(50) NOT NULL DEFAULT '',
+    celular VARCHAR(30) DEFAULT '',
+    endereco TEXT,
+    cpf VARCHAR(30) NOT NULL DEFAULT '' UNIQUE,
+    rg VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    ano INTEGER NOT NULL DEFAULT 0,
+    disciplina_id INTEGER NOT NULL REFERENCES disciplina(id) ON DELETE CASCADE,
+    perfil VARCHAR DEFAULT 'fotos/padrao.png'
+);
+
+CREATE TABLE pedido_equipamento (
+    id SERIAL PRIMARY KEY,
+    professor_id INTEGER NOT NULL REFERENCES professor(id) ON DELETE CASCADE,
+    assunto VARCHAR(100) DEFAULT '',
+    descricao TEXT
+);
+
+CREATE TABLE aluno_tem_professor (
+    aluno_id INTEGER NOT NULL REFERENCES aluno(id) ON DELETE CASCADE,
+    professor_id INTEGER NOT NULL REFERENCES professor(id) ON DELETE CASCADE,
+    PRIMARY KEY (aluno_id, professor_id)
+);
+</p>
+</div>
