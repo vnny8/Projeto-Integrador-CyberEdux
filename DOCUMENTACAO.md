@@ -54,6 +54,9 @@ AWS Elastic Beanstalk oferece uma solução mais escalável e robusta, mas com u
 
 Coloque aqui a modelagem do banco de dados desenvolvido no projeto. Você pode colocar diagramas conceituais e lógicos, ou até mesmo descrever textualmente o que cada uma das tabelas e atributos representam.
 
+<h3>Código SQL em PostgreSQL</h3>
+Um código SQL se refere à escrita de instruções em SQL (Structured Query Language), uma linguagem de programação projetada para gerenciar e manipular dados armazenados em sistemas de gerenciamento de banco de dados relacional (RDBMS). SQL é amplamente utilizado para inserir, consultar, atualizar e deletar dados, além de gerenciar estruturas de banco de dados e controlar o acesso aos dados.
+
 ```sql
 CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,
