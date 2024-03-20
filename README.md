@@ -9,7 +9,7 @@
 # Gestão Escolar Integrada
 
 <!-- Substitua a seguinte imagem por uma logo do seu projeto -->
-<img src="img/diretor.png" width="150px">
+<img src="img/logoProjeto.png" width="150px">
 
 <!-- Substitua o seguinte parágrafo por um resumo do seu projeto: -->
 "Gestão Escolar Integrada" refere-se a uma abordagem holística e sistemática para administrar todos os aspectos de uma instituição educacional, desde o planejamento acadêmico até a administração de recursos, passando pela interação entre alunos, professores e a direção. Essa abordagem busca unificar diversos processos e sistemas dentro da escola para melhorar a eficiência, a comunicação e a qualidade do ensino.
