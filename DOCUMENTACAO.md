@@ -23,9 +23,13 @@ Vercel não é tradicionalmente usado para hospedar aplicações Django, pois é
 PythonAnywhere é uma ótima opção para projetos Django menores ou em estágio inicial. Oferece uma configuração relativamente simples e um ambiente já preparado para Python e Django. Aqui estão os passos básicos:
 
 <b>1.</b> Crie uma conta e escolha seu plano de hospedagem.
+
 <b>2.</b> Use a interface do PythonAnywhere para clonar seu projeto do GitHub ou outro repositório.
+
 <b>3.</b> Configure seu ambiente virtual e instale as dependências do seu projeto a partir do requirements.txt.
+
 <b>4.</b> Configure seu arquivo wsgi.py no PythonAnywhere para corresponder ao seu projeto Django.
+
 <b>5.</b> Utilize as ferramentas do PythonAnywhere para configurar o servidor web e apontar para sua aplicação.
    
 <h4>AWS Elastic Beanstalk</h4>
