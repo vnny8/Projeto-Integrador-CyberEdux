@@ -5,7 +5,7 @@
 Fazer o deploy de um projeto web desenvolvido com Python e Django envolve vários passos e decisões importantes. Abaixo, vou destacar um processo geral e, em seguida, mencionar especificidades de alguns serviços de hospedagem populares que você mencionou.
 
 ## Processo Geral de Deploy com Django
-## Preparação do Projeto: 
+# Preparação do Projeto: 
 Certifique-se de que o seu projeto esteja utilizando um ambiente virtual e que todas as dependências estejam especificadas em um arquivo requirements.txt. Isso garante que o ambiente de produção possa ser configurado da mesma forma que o de desenvolvimento.
 
 Configurações para Produção: Revise as configurações do seu projeto Django para garantir que ele esteja pronto para produção. Isso inclui desabilitar o modo de depuração (DEBUG = False), configurar o ALLOWED_HOSTS, configurar o banco de dados de produção, e garantir que arquivos estáticos e de mídia sejam corretamente servidos.
