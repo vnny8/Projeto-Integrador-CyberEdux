@@ -175,8 +175,8 @@
                                         <div class="m-1">
                                             <div>
                                                 <h3 style="color: black; margin-bottom: 10px;"><strong>Enviar plano de ensino</strong></h3>
-                                                {% if usuario.disciplina.plano_ensino %}
-                                                    <a href="/media/{{ usuario.disciplina.plano_ensino }}" style="display: block; margin-bottom: 10px;" download><i class="fa-solid fa-file" style="color:black;"> </i> Download plano de ensino vigente</a>
+                                                {% if usuario.disciplina.planoensino %}
+                                                    <a href="/media/{{ usuario.disciplina.planoensino.plano_ensino }}" style="display: block; margin-bottom: 10px;" download><i class="fa-solid fa-file" style="color:black;"> </i> Download plano de ensino vigente</a>
                                                 {% else %}
                                                     <span style="display: block; margin-bottom: 10px;">Não há plano de ensino vigente</span>
                                                 {% endif %}

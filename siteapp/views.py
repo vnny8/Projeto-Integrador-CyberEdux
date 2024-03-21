@@ -122,14 +122,26 @@ def nota_alunos(request):
         id_entrada = request.POST.get("matricula")
         aluno = Aluno.objects.get(id=id_entrada)
         aluno_tem_disciplina = Aluno_tem_disciplina.objects.get(aluno_id=aluno.id, disciplina_id=professor.disciplina_id)  
-        nota = float(request.POST.get('nota'))
-        aluno_tem_disciplina.nota = nota
-        if nota >= 5:
-            aluno_tem_disciplina.status = 'Aprovado'
-        else:
-            aluno_tem_disciplina.status = 'Reprovado'
-        aluno_tem_disciplina.save()
-        return HttpResponseRedirect('nota_alunos/')
+        try:
+            nota = float(request.POST.get('nota'))
+            aluno_tem_disciplina.nota = nota
+            if 5 <= nota <= 10:
+                aluno_tem_disciplina.status = 'Aprovado'
+                messages.error(request, "Aluno avaliado com sucesso!")
+                aluno_tem_disciplina.save()
+                return redirect('nota_alunos/')
+            elif 0 <= nota < 5:
+                aluno_tem_disciplina.status = 'Reprovado'
+                messages.error(request, "Aluno avaliado com sucesso!")
+                aluno_tem_disciplina.save()
+                return redirect('nota_alunos/')
+            else:
+                messages.error(request, "ERRO. O valor da nota deve estar entre 0 e 10.")
+                return redirect('nota_alunos/')
+        except:
+            messages.error(request, "ERRO. O valor da nota deve estar entre 0 e 10.")
+            return redirect('nota_alunos/')
+        
     elif request.method == 'GET' or 'pesquisa' in request.GET:
         flag = 1
         pesquisa = request.GET.get('pesquisa', '')
