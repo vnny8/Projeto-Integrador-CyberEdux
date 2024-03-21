@@ -139,4 +139,4 @@ O Diagrama Entidade-Relacional (DER) é uma ferramenta de modelagem usada para r
 
 
 # DUVIDAS
-*Tem duvidas? envie um email:* viniciuspadilhavieira@hotmail.com
+*Tem duvidas? Envie um email:* viniciuspadilhavieira@hotmail.com
