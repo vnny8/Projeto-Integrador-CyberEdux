@@ -61,33 +61,34 @@ Um código SQL se refere à escrita de instruções em SQL (Structured Query Lan
 CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL DEFAULT '',
-    data_nascimento DATE,
+    data_nascimento DATE NULL,
     sexo VARCHAR(50) NOT NULL DEFAULT '',
     celular VARCHAR(30) DEFAULT '',
-    endereco TEXT,
+    endereco TEXT NULL,
     cpf VARCHAR(30) NOT NULL DEFAULT '' UNIQUE,
     rg VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
-    email VARCHAR(100) UNIQUE,
+    email VARCHAR(100) NULL UNIQUE,
     ano INTEGER NOT NULL DEFAULT 0,
     turma CHAR(1) NOT NULL DEFAULT '',
-    perfil VARCHAR DEFAULT 'fotos/padrao.png'
+    perfil VARCHAR DEFAULT 'fotos/padrao.png',
+    status_cadastro VARCHAR(100) NOT NULL DEFAULT 'Ativo'
 );
 
 CREATE TABLE plano_ensino (
     id SERIAL PRIMARY KEY,
-    plano_ensino VARCHAR DEFAULT 'pdfs/'
+    plano_ensino VARCHAR DEFAULT NULL
 );
 
 CREATE TABLE disciplina (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
-    planoensino_id INTEGER REFERENCES plano_ensino(id) ON DELETE CASCADE
+    planoensino_id INTEGER NULL REFERENCES plano_ensino(id) ON DELETE CASCADE
 );
 
 CREATE TABLE materiais (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
-    local VARCHAR DEFAULT 'pdfs/',
+    local VARCHAR DEFAULT NULL,
     disciplina_id INTEGER NOT NULL REFERENCES disciplina(id) ON DELETE CASCADE
 );
 
@@ -98,29 +99,30 @@ CREATE TABLE aluno_tem_disciplina (
     ano CHAR(4) DEFAULT '2023',
     status VARCHAR(10) DEFAULT 'Cursando',
     nota FLOAT DEFAULT 0.00,
-    UNIQUE(aluno_id, disciplina_id, ano)
+    UNIQUE (aluno_id, disciplina_id, ano)
 );
 
 CREATE TABLE professor (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL DEFAULT '',
-    data_nascimento DATE,
+    data_nascimento DATE NULL,
     sexo VARCHAR(50) NOT NULL DEFAULT '',
     celular VARCHAR(30) DEFAULT '',
-    endereco TEXT,
+    endereco TEXT NULL,
     cpf VARCHAR(30) NOT NULL DEFAULT '' UNIQUE,
     rg VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
-    email VARCHAR(100) UNIQUE,
+    email VARCHAR(100) NULL UNIQUE,
     ano INTEGER NOT NULL DEFAULT 0,
     disciplina_id INTEGER NOT NULL REFERENCES disciplina(id) ON DELETE CASCADE,
-    perfil VARCHAR DEFAULT 'fotos/padrao.png'
+    perfil VARCHAR DEFAULT 'fotos/padrao.png',
+    status_cadastro VARCHAR(100) NOT NULL DEFAULT 'Ativo'
 );
 
 CREATE TABLE pedido_equipamento (
     id SERIAL PRIMARY KEY,
     professor_id INTEGER NOT NULL REFERENCES professor(id) ON DELETE CASCADE,
     assunto VARCHAR(100) DEFAULT '',
-    descricao TEXT
+    descricao TEXT NULL
 );
 
 CREATE TABLE aluno_tem_professor (
@@ -129,3 +131,8 @@ CREATE TABLE aluno_tem_professor (
     PRIMARY KEY (aluno_id, professor_id)
 );
 ```
+
+<h3>Diagrama Entidade Relacional (DER)</h3>
+O Diagrama Entidade-Relacional (DER) é uma ferramenta de modelagem usada para representar sistemas de informação de maneira abstrata e conceitual. Sua principal função é ajudar no projeto de bancos de dados, facilitando a compreensão das estruturas de dados, suas relações e como estas podem ser implementadas em um sistema de gerenciamento de banco de dados (SGBD).
+
+<img src="img/DER projeto Final.jpg" width="1000px" style="border-radius: 50%;">
