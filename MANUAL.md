@@ -38,6 +38,8 @@ Página de Login, basta o diretor utilizar o login e a senha única do sistema.
 
 <img src="img/loginDiretor.png" width="1000px">
 
+# Aluno
+
 ## Página inicial do aluno
 
 Página simples em que temos alguns dados básicos do aluno e um calendário que se autoatualiza. No canto temos o botão para acessar a sidebar.
@@ -64,6 +66,8 @@ Nesta página o aluno poderá modificar determinadas informações e também pod
 
 <img src="img/configuracoesAluno.png" width="1000px">
 
+# Professor
+
 ## Página principal da conta do professor
 Nesta página o professor poderá ver suas informações básicas, enviar o plano de ensino da matéria para os alunos e enviar materiais de apoio. Além de um calendário que se autoatualiza.
 
@@ -87,6 +91,50 @@ Ao clicar em "Atribuir nota":
 Nesta página o professor poderá configurar e editar informações básicas da sua conta e poderá alterar sua foto de perfil.
 
 <img src="img/configuracoesProfessor.png" width="1000px">
+
+# Diretor
+
+## Página principal do diretor
+Nesta página o diretor poderá ter uma noção geral sobre sua escola através de gráficos, podendo ver quantos alunos há em cada disciplina por ano e também gráficos que representam os alunos aprovados, reprovados e cursando(Sem nota) em sua escola.
+
+<img src="img/principalDiretor.png" width="1000px">
+
+<img src="img/principalDiretor2.png" width="1000px">
+
+## Página de matrícula de alunos
+Nesta página o diretor poderá realizar a matrícula física (presencial) do aluno preenchendo as informações ou apenas aprovar/rejeitar os pedidos de matrícula online logo abaixo.
+
+<img src="img/matriculaAlunoDiretor1.png" width="1000px">
+
+<img src="img/matriculaAlunoDiretor2.png" width="1000px">
+
+## Página de edição de alunos
+Nesta página o diretor poderá editar as informações dos alunos ou simplesmente apagar o seu registro.
+
+<img src="img/editarAlunos.png" width="1000px">
+
+<img src="img/editarAlunos2.png" width="1000px">
+
+## Página de matrícula de professores
+Nesta página o diretor poderá realizar a matrícula física (presencial) do professor preenchendo as informações ou apenas aprovar/rejeitar os pedidos de matrícula online logo abaixo.
+
+<img src="img/matriculaProfessores.png" width="1000px">
+
+<img src="img/matriculaProfessores2.png" width="1000px">
+
+## Página de edição dos professores
+Nesta página o diretor poderá editar as informações dos professores ou simplesmente apagar o seu registro.
+
+<img src="img/editarProfessores.png" width="1000px">
+
+<img src="img/editarProfessores2.png" width="1000px">
+
+## Página de aprovar ou rejeitar pedidos dos professores
+Nesta página o diretor poderá aprovar ou rejeitar os pedidos realizados pelos professores no seu portal. Se aprovar um email automático será enviado ao professor dizendo que foi aprovado e outro para o email que faz a provisão dos pedidos escolas. Caso seja rejeitado apenas o professor recebe o email.
+
+<img src="img/alugar.png" width="1000px">
+
+
 
 
 
