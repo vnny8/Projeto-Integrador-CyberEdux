@@ -6,12 +6,31 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css'>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js'></script>
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
+<style>
+.largura {
+    width: 420%;
+}
+.botoes{
+    width: 426%;
+}
+  
+@media (max-width: 768px) {
+    .largura {
+      width: 150%;
+    }
+    .botoes{
+        width: 156%;
+    }
+
+}
+</style>
 <body>
     <title>Alugar</title>
     <div id="wrapper">
@@ -48,21 +67,21 @@
                             <h1>Alugar equipamentos ou sala</h1>
                         </div>
                         <main class="container">
-                            <div class="row p-4" style="background-color: #F4F4F4; border-radius: 16px;">
+                            <div class="row p-4" style="background-color: #F4F4F4; border-radius: 16px; width: max-width;">
                                 <div class="row m-3 align-items-center">
                                     <form method="POST"> {% csrf_token %}
-                                        <div class="form-group" style="width: 1000px">
+                                        <div class="largura form-group ml-3">
                                             <label for="titulo"><b>Assunto do pedido:</b></label>
                                             <input type="text" class="form-control" id="titulo" name="titulo" aria-describedby="emailHelp" style="border-radius: 7px;">
                                         </div>
-                                            <div class="form-group">
+                                            <div class=" largura form-group ml-3">
                                             <label for="conteudo"><b>Descrição dos itens do pedido:</b></label>
                                             <textarea class="form-control" rows="9" id="conteudo" name="conteudo" style="border-radius: 7px;"></textarea>
                                         </div>
-                                        <div style="text-align: right;">
-                                            <button type="reset" class="btn btn-primary" style="border-radius: 7px; background-color: blue;">Limpar</button>
+                                        <div class="botoes form-group d-flex justify-content-end">
+                                            <button type="reset" class="btn btn-primary mr-2" style="border-radius: 7px; background-color: blue;">Limpar</button>
                                             <button type="submit" class="btn btn-success" style="background-color: green; color: white; border-radius: 7px;">Enviar</button>
-                                        </div>
+                                        </div>                                        
                                     </form>
                                 </div>
                             </div>

@@ -6,12 +6,31 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css'>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js'></script>
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
+<style>
+    .largura {
+        width: 290%;
+    }
+    .botoes{
+        width: 291%;
+    }
+      
+    @media (max-width: 768px) {
+        .largura {
+          width: 112%;
+        }
+        .botoes{
+            width: 113%;
+        }
+    
+    }
+    </style>
 <body>
     <div id="wrapper">
         <div class="overlay"></div>
@@ -48,7 +67,7 @@
                             <div class="row p-4" style="background-color: #F1F1F1; border-radius: 16px;;">
                                 <div class="row m-3 align-items-center">
                                     <form method="POST"> {% csrf_token %}
-                                        <div class="form-group" style="width: 1000px">
+                                        <div class="largura form-group" style="width: max-width;">
                                             <label for="titulo"><b>Escolha o professor:</b></label>
                                             <select class="form-control" style="height: 45px; border-radius: 7px;" id="professor" name="professor" >
                                                 <option></option>
@@ -57,16 +76,16 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        <div class="form-group" style="width: 1000px">
+                                        <div class="largura form-group" style="width: max-width;">
                                             <label for="titulo"><b>Assunto da Mensagem:</b></label>
                                             <input type="text" class="form-control" id="titulo" name="titulo" aria-describedby="emailHelp" style="border-radius: 7px;">
                                         </div>
-                                        <div class="form-group">
+                                        <div class=" largura form-group">
                                             <label for="conteudo"><b>Mensagem:</b></label>
                                             <textarea class="form-control" rows="9" id="mensagem" name="mensagem" style="border-radius: 7px;"></textarea>
                                         </div>
-                                        <div style="text-align: right;">
-                                            <button type="reset" class="btn btn-primary text-light me-2" style="border-radius: 7px; background-color: blue;">Limpar</button>
+                                        <div class="botoes form-group d-flex justify-content-end">
+                                            <button type="reset" class="btn btn-primary text-light mr-2" style="border-radius: 7px; background-color: blue;">Limpar</button>
                                             <button type="submit" class="btn btn-success" style="background-color: green; color: white; border-radius: 7px;">Enviar</button>
                                         </div>
                                     </form>

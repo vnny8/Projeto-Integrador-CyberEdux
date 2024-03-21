@@ -57,4 +57,9 @@ urlpatterns = [
     path('mensagem/<str:pagina>/', redirecionar),
     
     path('', views.principal),
+    path('cadastro_professor/', views.matriculaProfessor, name="cadastro_professor"),
+    path('cadastro_professor/<str:pagina>/', redirecionar),
+    path('matricula_aluno/', views.matriculaAluno, name="matricula_aluno"),
+    path('matricula_aluno/<str:pagina>/', redirecionar),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,7 @@ class Aluno(models.Model):
     ano = models.IntegerField(null=False, default=0)
     turma = models.CharField(max_length=1, null=False, default="")
     perfil = models.ImageField(upload_to='fotos/', default='fotos/padrao.png')
+    status_cadastro = models.CharField(max_length=100, null=False, default="Ativo")
     
 class Plano_Ensino(models.Model):
     plano_ensino = models.FileField(upload_to='pdfs/', default=None)
@@ -47,6 +48,7 @@ class Professor(models.Model):
     ano = models.IntegerField(null=False, default=0)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE, default=None)
     perfil = models.ImageField(upload_to='fotos/', default='fotos/padrao.png')
+    status_cadastro = models.CharField(max_length=100, null=False, default="Ativo")
     
 class Pedido_Equipamento(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, default=None)
